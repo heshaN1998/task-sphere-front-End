@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-function Login() {
-
+function Register() {
   const [formData, setFormData] = useState({
     userName: "",
     password: "",
+    confirmPassword: "",
   });
 
   const handleChange = (e) => {
@@ -21,22 +21,18 @@ function Login() {
     console.log(formData);
   };
 
-
   return (
     <div className="min-h-screen bg-slate-100 flex items-center justify-center px-4">
       <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8">
         <h1 className="text-3xl font-bold text-center text-slate-800">
-          TaskSphere
+          Create Account
         </h1>
 
         <p className="text-center text-slate-500 mt-2 mb-8">
-          Sign in to your account
+          Join TaskSphere
         </p>
 
-        <form 
-          onSubmit={handleSubmit}
-          className="space-y-5"
-        >
+        <form onSubmit={handleSubmit} className="space-y-5">
 
           <div>
             <label className="block mb-2 text-sm font-medium text-slate-700">
@@ -48,12 +44,8 @@ function Login() {
               name="userName"
               value={formData.userName}
               onChange={handleChange}
-              placeholder="Enter your username"
-              className="
-                w-full rounded-lg border border-slate-300 
-                px-4 py-3 outline-none 
-                focus:ring-2 focus:ring-blue-500
-              "
+              placeholder="Enter username"
+              className="w-full rounded-lg border border-slate-300 px-4 py-3 focus:ring-2 focus:ring-blue-500 outline-none"
             />
           </div>
 
@@ -67,34 +59,41 @@ function Login() {
               name="password"
               value={formData.password}
               onChange={handleChange}
-              placeholder="Enter your password"
-              className="
-                w-full rounded-lg border border-slate-300 
-                px-4 py-3 outline-none 
-                focus:ring-2 focus:ring-blue-500
-              "
+              placeholder="Enter password"
+              className="w-full rounded-lg border border-slate-300 px-4 py-3 focus:ring-2 focus:ring-blue-500 outline-none"
+            />
+          </div>
+
+          <div>
+            <label className="block mb-2 text-sm font-medium text-slate-700">
+              Confirm Password
+            </label>
+
+            <input
+              type="password"
+              name="confirmPassword"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              placeholder="Confirm password"
+              className="w-full rounded-lg border border-slate-300 px-4 py-3 focus:ring-2 focus:ring-blue-500 outline-none"
             />
           </div>
 
           <button
             type="submit"
-            className="
-              w-full bg-blue-600 text-white 
-              py-3 rounded-lg font-semibold 
-              hover:bg-blue-700 transition
-            "
+            className="w-full rounded-lg bg-blue-600 py-3 font-semibold text-white hover:bg-blue-700 transition"
           >
-            Login
+            Register
           </button>
         </form>
 
-        <p className="text-center mt-6 text-slate-600">
-          Don't have an account?{" "}
+        <p className="mt-6 text-center text-slate-600">
+          Already have an account?{" "}
           <Link
-            to="/register"
-            className="text-blue-600 font-medium hover:underline"
+            to="/"
+            className="font-medium text-blue-600 hover:underline"
           >
-            Register
+            Login
           </Link>
         </p>
       </div>
@@ -102,5 +101,4 @@ function Login() {
   );
 }
 
-
-export default Login;
+export default Register;
