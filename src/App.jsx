@@ -4,6 +4,7 @@ import AppLayout from './components/layouts/AppLayout';
 
 import Login from './pages/Login';
 import Register from './pages/Register';
+import ProtectedRoute from './components/layouts/ProtectedRoute';
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
     <Routes>
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+      <Route  element={<ProtectedRoute><AppLayout /></ProtectedRoute>} />
     </Routes>
   );
 }
