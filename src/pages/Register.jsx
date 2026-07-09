@@ -1,104 +1,103 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import { Button, Input, Select, Alert } from "../components/ui";
+import { getErrorMessage } from "../utils/formatters";
+import { ROLES } from "../utils/constants";
 
-function Register() {
-  const [formData, setFormData] = useState({
-    userName: "",
+const roleOptions = [
+  { value: ROLES.TEAM_MEMBER, label: "Team Member" },
+  { value: ROLES.MANAGER, label: "Manager" },
+];
+
+export default function Register() {
+  const { register } = useAuth();
+  const navigate = useNavigate();
+
+  const [form, setForm] = useState({
+    fullName: "",
+    email: "",
     password: "",
-    confirmPassword: "",
+    role: ROLES.TEAM_MEMBER,
   });
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
+  function handleChange(e) {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  }
 
-  const handleSubmit = (e) => {
+  async function handleSubmit(e) {
     e.preventDefault();
-
-    console.log(formData);
-  };
+    setError("");
+    setLoading(true);
+    try {
+      await register(form);
+      navigate("/reports");
+    } catch (err) {
+      setError(getErrorMessage(err));
+    } finally {
+      setLoading(false);
+    }
+  }
 
   return (
-    <div className="min-h-screen bg-slate-100 flex items-center justify-center px-4">
-      <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8">
-        <h1 className="text-3xl font-bold text-center text-slate-800">
-          Create Account
-        </h1>
+    <div className="flex min-h-screen items-center justify-center bg-slate-50 px-4">
+      <div className="w-full max-w-sm rounded-xl border border-slate-200 bg-white p-8 shadow-sm">
+        <div className="mb-6 text-center">
+          <h1 className="text-xl font-bold text-primary-700">TaskSphere</h1>
+          <p className="mt-1 text-sm text-slate-500">Create your account</p>
+        </div>
 
-        <p className="text-center text-slate-500 mt-2 mb-8">
-          Join TaskSphere
-        </p>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          <Alert variant="error">{error}</Alert>
 
-        <form onSubmit={handleSubmit} className="space-y-5">
+          <Input
+            label="Full Name"
+            name="fullName"
+            value={form.fullName}
+            onChange={handleChange}
+            placeholder="Heshan Wickramarathna"
+            required
+          />
+          <Input
+            label="Email"
+            name="email"
+            type="email"
+            value={form.email}
+            onChange={handleChange}
+            placeholder="heshan@####.com"
+            required
+          />
+          <Input
+            label="Password"
+            name="password"
+            type="password"
+            value={form.password}
+            onChange={handleChange}
+            placeholder="must over 5 characters"
+            required
+          />
+          <Select
+            label="Role"
+            name="role"
+            value={form.role}
+            onChange={handleChange}
+            options={roleOptions}
+          />
 
-          <div>
-            <label className="block mb-2 text-sm font-medium text-slate-700">
-              Username
-            </label>
-
-            <input
-              type="text"
-              name="userName"
-              value={formData.userName}
-              onChange={handleChange}
-              placeholder="Enter username"
-              className="w-full rounded-lg border border-slate-300 px-4 py-3 focus:ring-2 focus:ring-blue-500 outline-none"
-            />
-          </div>
-
-          <div>
-            <label className="block mb-2 text-sm font-medium text-slate-700">
-              Password
-            </label>
-
-            <input
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              placeholder="Enter password"
-              className="w-full rounded-lg border border-slate-300 px-4 py-3 focus:ring-2 focus:ring-blue-500 outline-none"
-            />
-          </div>
-
-          <div>
-            <label className="block mb-2 text-sm font-medium text-slate-700">
-              Confirm Password
-            </label>
-
-            <input
-              type="password"
-              name="confirmPassword"
-              value={formData.confirmPassword}
-              onChange={handleChange}
-              placeholder="Confirm password"
-              className="w-full rounded-lg border border-slate-300 px-4 py-3 focus:ring-2 focus:ring-blue-500 outline-none"
-            />
-          </div>
-
-          <button
-            type="submit"
-            className="w-full rounded-lg bg-blue-600 py-3 font-semibold text-white hover:bg-blue-700 transition"
-          >
-            Register
-          </button>
+          <Button type="submit" fullWidth loading={loading}>
+            Create Account
+          </Button>
         </form>
 
-        <p className="mt-6 text-center text-slate-600">
+        <p className="mt-5 text-center text-sm text-slate-500">
           Already have an account?{" "}
-          <Link
-            to="/"
-            className="font-medium text-blue-600 hover:underline"
-          >
-            Login
+          <Link to="/login" className="font-medium text-primary-600 hover:underline">
+            Sign in
           </Link>
         </p>
       </div>
     </div>
   );
 }
-
-export default Register;
