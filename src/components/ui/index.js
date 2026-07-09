@@ -9,6 +9,7 @@ export { default as StatCard } from "./StatCard";
 export { default as Textarea } from "./Textarea";
 export { default as Modal } from "./Modal";
 export { default as EmptyState } from "./EmptyState";
+export { default as Card } from "./Card";
 
 
 

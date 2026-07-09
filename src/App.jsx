@@ -9,6 +9,9 @@ import Dashbord from './pages/Dashbord';
 import Project from './pages/Project';
 import Profile from './pages/Profile';
 import ManagerRoute from './components/layouts/ManagerRoute';
+import NotFound from './pages/NotFoun';
+import Reports from './pages/Report';
+import ReportForm from './pages/ReportForm';  
 
 function App() {
 
@@ -22,8 +25,11 @@ function App() {
       <Route path="/users" element={<ManagerRoute>Users</ManagerRoute>} />
       <Route path="/projects" element={<Project />} />
       <Route path="/profile" element={<Profile />} />
-      
-       
+      <Route path="*" element={<NotFound />} />
+      <Route path ="/reports" element={<Reports />} />
+      <Route path="/reports/new" element={<ReportForm />} />
+      <Route path="/reports/:id/edit" element={<ReportForm />} />
+     
     </Routes>
   );
 }
