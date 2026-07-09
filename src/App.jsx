@@ -1,8 +1,7 @@
 import { useState } from 'react'
-import { Routes, Route, Navigate } from 'react-router-dom'
 
 import './App.css'
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes,Navigate } from 'react-router-dom';
 import Login from './pages/Login';
 import Register from './pages/Register';
 
