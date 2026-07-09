@@ -1,7 +1,7 @@
 import {useContext,useState} from "react";
 import {ChatContext} from "../../context/ChatContext";
 import ChatMessage from "./ChatMessage";
-import "./aiChat.css";
+import "../aicss/AiChat.css";
 
 
 function AiChat(){
