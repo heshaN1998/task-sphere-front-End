@@ -1,16 +1,72 @@
-# React + Vite
+**TaskSphere – Task & Weekly Reporting Management System**.
+# TaskSphere Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+TaskSphere Frontend is a modern web application for the *TaskSphere Task and Weekly Reporting Management System*. It provides an intuitive user interface for managers and team members to manage projects, tasks, users, and weekly reports.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- User Authentication (JWT)
+- Secure Login & Registration
+- Dashboard Overview
+- Project Management
+- Task Management
+- Weekly Report Management
+- User Profile Management
+- Responsive Design
+- Protected Routes
+- Role-Based Navigation
 
-## React Compiler
+## Frontend
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 19
+- Vite
+- React Router DOM
+- Tailwind CSS v4
+- Axios
+- React Icons
+- Context API
 
-## Expanding the ESLint configuration
+Make sure the following software is installed:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Node.js (v20 or later)
+- npm
+- Git
+
+
+##installation
+
+Clone the repository
+  git clone <repository-url>
+
+Navigate to the project
+  cd TaskSphere-Frontend
+
+Install dependencies
+  npm install
+
+## Run the Development Server
+npm run dev
+
+The application will start at
+http://localhost:5173
+(frontend connects directly to the backend running on http://localhost:8082.)
+didint use .env
+
+##Build for Production
+npm run build
+
+##Authentication
+
+TaskSphere Frontend communicates with the Spring Boot backend using *JWT Authentication*.
+
+The authentication flow:
+
+- User Login
+- JWT Token Generation
+- Token Storage
+- Protected Routes
+- Automatic Authorization Header using Axios
+
+Must Remember Default Backend URL   http://localhost:8082
+Must Remember Default Frontend URL  http://localhost:5173
+
