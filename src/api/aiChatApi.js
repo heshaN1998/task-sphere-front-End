@@ -1,8 +1,8 @@
-// import axios from "axios";
-// const AI_CHAT_URL = "http://localhost:8082/aichat";
+import axiosClient from "../api/axiosClient.js";
+const AI_CHAT_URL = "http://localhost:8082/aichat";
 
-// export const sendAiMessage = async (message) => {
-//     const response = await axios.post(AI_CHAT_URL , {message: message});
-//     return response.data;
-// };
+export const sendAiMessage = async (message) => {
+    const response = await axiosClient.post(AI_CHAT_URL , {message: message});
+    return response.data;
+};
 

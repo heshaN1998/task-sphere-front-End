@@ -1,63 +1,65 @@
-// import {useContext,useState} from "react";
-// import {ChatContext} from "../../context/ChatContext.jsx.disabled";
-// import Chatmessage from "./ChatMessage.jsx.disabled";
-// import "../aicss/AiChat.css";
+import {useContext,useState} from "react";
+import {ChatContext} from "../../context/ChatContext.jsx";
+import ChatMessage from "./ChatMessage.jsx";
+import "../aicss/AiChat.css";
 
 
-// function AiChat(){
-//     const { messages,loading,askAI } = useContext(ChatContext);
-//     const [message,setMessage] = useState("");
+function AiChat(){
+    const { messages,loading,askAI } = useContext(ChatContext);
+    const [message,setMessage] = useState("");
     
-//     const send = ()=>{
-//         if(message.trim()==="")
-//             return;
-//         askAI(message);
-//         setMessage("");
+    const send = ()=>{
+        if(message.trim()==="")
+            return;
+        askAI(message);
+        setMessage("");
     
-//     };
+    };
 
-//     return (
-//             <div className="ai-chat-box">
-//             <div className="ai-header">
-//                 🤖 TaskSphere AI Assistant
-//             </div>
-//             <div className="ai-messages">
-//                 {
-//                     messages.map(
-//                         (msg,index)=>( <ChatMessage key={index} message={msg} /> )
-//                     )
-//                 }
+    return (
+            <div className="ai-chat-box">
+            <div className="ai-header">
+                🤖 TaskSphere AI Assistant
+            </div>
+            <div className="ai-messages">
+                {
+                    messages.map(
+                        (msg,index)=>( <ChatMessage key={index} message={msg} /> )
+                    )
+                }
     
-//                 {
-//                     loading &&
-//                     <div className="chat-message assistant">
-//                         Thinking...
-//                     </div>
-//                 }
+                {
+                    loading &&
+                    <div className="chat-message assistant">
+                        Thinking...
+                    </div>
+                }
                 
-//                 </div>
+                </div>
 
-//             <div className="ai-input">
-//                 <input
-//                     value={message}
-//                     onChange={ e=>setMessage(e.target.value) }
-//                     onKeyDown={ e=>{
-//                                 if(e.key==="Enter")
-//                                 send();
-//                     }
-//                     }
+            <div className="ai-input">
+                <input
+                    value={message}
+                    onChange={ e=>setMessage(e.target.value) }
+                    onKeyDown={ e=>{
+                                if(e.key==="Enter" && !e.shiftKey){
+                                    e.preventDefault();
+                                send();
+                                }
+                    }
+                    }
 
-//             placeholder="Lets Seek Weekly reports..."
-// />
+            placeholder="Lets Seek Weekly reports..."
+/>
 
-//             <button onClick={send}> Send </button>
-//         </div>
-//     </div>
+            <button onClick={send}> Send </button>
+        </div>
+    </div>
 
-//     );
-
-
-// }
+    );
 
 
-// export default AiChat;
+}
+
+
+export default AiChat;

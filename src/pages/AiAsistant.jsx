@@ -1,14 +1,14 @@
-// import AiChat from "../components/layouts/AiChat.jsx.disabled";
+import AiChat from "../components/layouts/AiChat.jsx";
 
 
-// function AiAsistant(){
+function AiAsistant(){
     
-//     return (
-//         <div style={{ display:"flex", justifyContent:"center", marginTop:"40px" }} >
-//             <AiChat/>
-//         </div>
-//     );
-// }
+    return (
+        <div style={{ display:"flex", justifyContent:"center", marginTop:"40px" }} >
+            <AiChat/>
+        </div>
+    );
+}
 
 
-// export default AiAsistant;
+export default AiAsistant;

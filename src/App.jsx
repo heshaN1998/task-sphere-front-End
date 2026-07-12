@@ -13,7 +13,7 @@ import ManagerRoute from './components/layouts/ManagerRoute';
 import NotFound from './pages/NotFoun';
 import Reports from './pages/Report';
 import ReportForm from './pages/ReportForm';
-// import AiAsistant from './pages/AiAsistant.jsx.disabled';
+import AiAsistant from './pages/AiAsistant.jsx';
 
 function App() {
 
@@ -35,7 +35,7 @@ function App() {
       <Route path="/reports/:id/edit" element={<ReportForm />}/>
       <Route path="/users" element={<ManagerRoute><Users /></ManagerRoute>}/>
       <Route path="/profile" element={<Profile />}/>
-      {/* <Route path="/intelligent-assistant" element={<AiAsistant />} /> */}
+      <Route path="/intelligent-assistant" element={<AiAsistant />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>

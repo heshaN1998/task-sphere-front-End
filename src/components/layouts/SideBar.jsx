@@ -36,9 +36,9 @@ export default function Sidebar() {
         <NavLink to="/profile" className={linkClasses}>
           Profile
         </NavLink>
-        {/* <NavLink to="/intelligent-assistant" className={linkClasses}>
+        <NavLink to="/intelligent-assistant" className={linkClasses}>
           AI Assistant
-        </NavLink> */}
+        </NavLink>
       </nav>
     </aside>
   );
