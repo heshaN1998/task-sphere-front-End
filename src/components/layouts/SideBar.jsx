@@ -6,7 +6,7 @@ const linkClasses = ({ isActive }) =>
     isActive ? "bg-primary-50 text-primary-700" : "text-slate-600 hover:bg-slate-100"
   }`;
 
-export default function Sidebar() {
+export default function SideBar() {
   const { isManager } = useAuth();
 
   return (
